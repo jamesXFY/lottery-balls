@@ -1,0 +1,46 @@
+.square {
+  display: table;
+  width: 35px;
+  height: 35px;
+  margin: 0;
+  position: relative;
+  border-style: solid;
+  border-width: 1px;
+  border-color: gray;
+}
+
+.number {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+  text-align: center;
+  color: #6c4498;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+  animation: ballRoll 2s ease-out;
+}
+
+.number:after {
+  content: attr(data-number);
+  position: absolute;
+  transform: translateX(-75%);
+  opacity: 0;
+  animation: numberReveal 0.1s 1.5s reverse forwards;
+}
+
+.number:before {
+  content: " ";
+  position: absolute;
+  transform: translateX(-25%);
+  animation: numberReveal 0.1s 1.5s forwards;
+}
+
+.filled {
+  background: radial-gradient(
+    circle at 50% 40%,
+    #53a3a3,
+    #53a3a3 66%,
+    #9b5050 100%
+  );
+}

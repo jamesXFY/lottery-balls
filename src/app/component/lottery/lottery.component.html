@@ -1,0 +1,29 @@
+<div fxLayout="column" fxLayoutAlign="space-between">
+  <div fxLayout="row" fxFlexAlign="center none" class="ball-section">
+    <div *ngFor="let number of lotteryBalls">
+      <app-ball [lotteryNumber]="number"></app-ball>
+    </div>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="space-between">
+    <div fxLayout="row" fxFlexAlign="center none" class="square-section">
+      <div *ngFor="let number of lotterySquaresFirstLine">
+        <app-square [lotteryNumber]="number"></app-square>
+      </div>
+    </div>
+    <div fxLayout="row" fxFlexAlign="center none" class="square-section">
+      <div *ngFor="let number of lotterySquaresSecondLine">
+        <app-square [lotteryNumber]="number"></app-square>
+      </div>
+    </div>
+    <div fxLayout="row" fxFlexAlign="center none" class="square-section">
+      <div *ngFor="let number of lotterySquaresThirdLine">
+        <app-square [lotteryNumber]="number"></app-square>
+      </div>
+    </div>
+    <div fxLayout="row" fxFlexAlign="none" class="square-section">
+      <div *ngFor="let number of lotterySquaresForthLine">
+        <app-square [lotteryNumber]="number"></app-square>
+      </div>
+    </div>
+  </div>
+</div>
