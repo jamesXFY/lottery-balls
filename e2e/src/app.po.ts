@@ -1,11 +1,18 @@
-import { browser, by, element } from 'protractor';
+import { browser, by, element, ElementArrayFinder } from 'protractor';
 
 export class AppPage {
   navigateTo() {
     return browser.get(browser.baseUrl) as Promise<any>;
   }
 
-  getTitleText() {
-    return element(by.css('app-root h1')).getText() as Promise<string>;
+  getResults(elements: ElementArrayFinder) {
+    const results = [];
+    elements.each((elementFinder) => {
+      elementFinder.getText().then(value => {
+        results.push(value);
+      });
+    });
+
+    return results;
   }
 }

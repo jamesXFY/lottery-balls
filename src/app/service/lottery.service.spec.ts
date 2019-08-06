@@ -16,4 +16,13 @@ describe('LotteryService', () => {
     const service: LotteryService = TestBed.get(LotteryService);
     expect(service).toBeDefined();
   });
+
+  it('should return value from observable', () => {
+    const service: LotteryService = TestBed.get(LotteryService);
+    service.getLotteryNumbers().subscribe(result => {
+      expect(result.DrawResults.length).toBeGreaterThan(0);
+      expect(result.DrawResults[0].PrimaryNumbers.length).toBe(7);
+      expect(result.DrawResults[0].SecondaryNumbers.length).toBe(1);
+    });
+  });
 });
