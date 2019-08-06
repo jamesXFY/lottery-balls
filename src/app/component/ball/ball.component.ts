@@ -10,6 +10,9 @@ export class BallComponent implements OnChanges {
   @Input()
   public lotteryNumber?: number;
 
+  @Input()
+  public secondary?: boolean;
+
   @ViewChild('ball', {static : false})
   public ballElement: ElementRef;
 
@@ -19,7 +22,9 @@ export class BallComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.hasOwnProperty('lotteryNumber') && changes.lotteryNumber.currentValue) {
-      // this.renderer2.addClass(this.el.nativeElement, 'filled');
+      if (this.ballElement) {
+        this.renderer2.addClass(this.ballElement.nativeElement, 'filled');
+      }
     }
   }
 }

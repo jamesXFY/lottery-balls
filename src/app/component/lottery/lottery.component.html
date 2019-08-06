@@ -1,29 +1,49 @@
-<div fxLayout="column" fxLayoutAlign="space-between">
+<div fxLayout="column" fxLayoutAlign="center center">
   <div fxLayout="row" fxFlexAlign="center none" class="ball-section">
-    <div *ngFor="let number of lotteryBalls">
-      <app-ball [lotteryNumber]="number"></app-ball>
+    <div *ngFor="let number of primaryBalls">
+      <app-ball [lotteryNumber]="primaryNumbers[number-1] || ' '"></app-ball>
+    </div>
+    <div *ngFor="let number of secondaryBalls">
+      <app-ball [lotteryNumber]="secondaryNumbers[number-1] || 'PB'" secondary="true"></app-ball>
     </div>
   </div>
   <div fxLayout="column" fxLayoutAlign="space-between">
     <div fxLayout="row" fxFlexAlign="center none" class="square-section">
       <div *ngFor="let number of lotterySquaresFirstLine">
-        <app-square [lotteryNumber]="number"></app-square>
+        <app-square [lotteryNumber]="number" [lotteryResult] = "primaryNumbers"></app-square>
       </div>
     </div>
     <div fxLayout="row" fxFlexAlign="center none" class="square-section">
       <div *ngFor="let number of lotterySquaresSecondLine">
-        <app-square [lotteryNumber]="number"></app-square>
+        <app-square [lotteryNumber]="number" [lotteryResult] = "primaryNumbers"></app-square>
       </div>
     </div>
     <div fxLayout="row" fxFlexAlign="center none" class="square-section">
       <div *ngFor="let number of lotterySquaresThirdLine">
-        <app-square [lotteryNumber]="number"></app-square>
+        <app-square [lotteryNumber]="number" [lotteryResult] = "primaryNumbers"></app-square>
       </div>
     </div>
     <div fxLayout="row" fxFlexAlign="none" class="square-section">
       <div *ngFor="let number of lotterySquaresForthLine">
-        <app-square [lotteryNumber]="number"></app-square>
+        <app-square [lotteryNumber]="number" [lotteryResult] = "primaryNumbers"></app-square>
+      </div>
+    </div>
+    <div fxLayout="column" fxFlexAlign="center center" class="square-section">
+      <div fxFlex="1 1 auto" fxLayout="column" fxFlexAlign="center center">
+        <span class="section-split">{{'select your powerball' | uppercase}}</span>
+      </div>
+    </div>
+    <div fxLayout="row" fxFlexAlign="center none" class="square-section">
+      <div *ngFor="let number of lotterySquaresFirstLine">
+        <app-square [lotteryNumber]="number" [lotteryResult] = "secondaryNumbers"></app-square>
+      </div>
+    </div>
+    <div fxLayout="row" fxFlexAlign="center none" class="square-section">
+      <div *ngFor="let number of lotterySquaresSecondLine">
+        <app-square [lotteryNumber]="number" [lotteryResult] = "secondaryNumbers"></app-square>
       </div>
     </div>
   </div>
+  <button (click)="loadResult()">{{'auto-fill' | uppercase}}</button>
 </div>
+

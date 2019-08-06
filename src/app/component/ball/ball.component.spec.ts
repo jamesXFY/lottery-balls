@@ -23,17 +23,18 @@ describe('BallComponent', () => {
   });
 
   it('the background color should change, the number should right', () => {
-    component.ngOnChanges({
-      lotteryNumber: new SimpleChange(undefined, 8, true)
+    fixture.whenStable().then(() => {
+      component.ngOnChanges({
+        lotteryNumber: new SimpleChange(undefined, 8, true)
+      });
+
+      fixture.detectChanges();
+
+      const ballElement = fixture.debugElement.query(By.css('.ball'));
+      const spanElement = fixture.debugElement.query(By.css('.number'));
+
+      expect(ballElement.nativeElement).toHaveClass('filled');
+      expect(spanElement).withContext('8');
     });
-
-    fixture.detectChanges();
-
-    const ballElement = fixture.debugElement.query(By.css('.ball'));
-    const spanElement = fixture.debugElement.query(By.css('.number'));
-
-    expect(ballElement.nativeElement).toHaveClass('filled');
-    expect(spanElement).withContext('8');
-
   });
 });

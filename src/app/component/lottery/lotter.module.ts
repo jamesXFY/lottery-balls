@@ -4,6 +4,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { BallComponent } from '../ball/ball.component';
 import { SquareComponent } from '../square/square.component';
 import { LotteryComponent } from './lottery.component';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { LotteryService } from 'src/app/service/lottery.service';
 
 @NgModule({
   declarations: [
@@ -12,10 +14,11 @@ import { LotteryComponent } from './lottery.component';
     LotteryComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [LotteryService, HttpClient],
   exports: [BallComponent,
     SquareComponent,
     LotteryComponent]

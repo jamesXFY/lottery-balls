@@ -19,4 +19,19 @@ describe('SquareComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should return true if number be selected and false if not', () => {
+    component.lotteryNumber = 1;
+    component.lotteryResult = [2, 3, 1];
+
+    fixture.detectChanges();
+
+    expect(component.checkLotteryNumber()).toBe(true);
+
+    component.lotteryNumber = 5;
+
+    fixture.detectChanges();
+
+    expect(component.checkLotteryNumber()).toBe(false);
+  });
 });

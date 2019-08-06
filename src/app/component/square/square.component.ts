@@ -1,14 +1,17 @@
-import { Component, OnChanges, Input, ViewChild, ElementRef, Renderer2, SimpleChanges } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, Renderer2, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-square',
   templateUrl: './square.component.html',
   styleUrls: ['./square.component.scss']
 })
-export class SquareComponent implements OnChanges {
+export class SquareComponent {
 
   @Input()
   public lotteryNumber?: number;
+
+  @Input()
+  public lotteryResult?: number[] = [];
 
   @ViewChild('square', {static : false})
   public squareElement: ElementRef;
@@ -17,11 +20,15 @@ export class SquareComponent implements OnChanges {
 
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.hasOwnProperty('lotteryNumber') && changes.lotteryNumber.currentValue) {
-      // console.log('change');
-      // this.renderer2.addClass(this.squareElement.nativeElement, 'filled');
-    }
+  public checkLotteryNumber() {
+    let selected = false;
+    this.lotteryResult.forEach(result => {
+      if (result === this.lotteryNumber) {
+        selected = true;
+      }
+    });
+
+    return selected;
   }
 
 }

@@ -1,3 +1,3 @@
-<div #square class="square">
+<div #square class="square" [ngClass]="{'selected': checkLotteryNumber()}">
     <span class="number" data-number="4">{{ lotteryNumber || ' 32 '}}</span>
-  </div>
+</div>

@@ -36,11 +36,6 @@
   animation: numberReveal 0.1s 1.5s forwards;
 }
 
-.filled {
-  background: radial-gradient(
-    circle at 50% 40%,
-    #53a3a3,
-    #53a3a3 66%,
-    #9b5050 100%
-  );
+.selected {
+  background-color: #e9e4f1 !important;
 }
